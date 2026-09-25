@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private http:HttpClient) { }
 
   ngOnInit() {
-    this.http.get<any[]>(this.olympicUrl).pipe().subscribe(
+    this.http.get<any[]>(this.olympicUrl).subscribe(
       (data) => {
         console.log(`Liste des données : ${JSON.stringify(data)}`);
         if (data && data.length > 0) {
