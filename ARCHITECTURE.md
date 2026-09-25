@@ -3,22 +3,30 @@
 ## ANALYSE D'ARCHITECTURE
 
 ### Issues :
-1. il n'y a pas d'interface et beaucoup d'utilisation de "any" alors que l'on connais la composition des datas
+1. il n'y a pas d'interface et beaucoup d'utilisation de "any" alors que l'on connait la composition des datas
 2. l'intégralité des data mocké sont dans un console.log()
 3. Duplication de  private olympicUrl = './assets/mock/olympic.json'; entre les composants
-4. Dans country.components.ts on a rien si le pays n'est pas trouvé 
-5. Des tests ne sont pas pertinant exemple : celui qui test TITLE dans app.component.spec.ts
+4. Dans country.component.ts on a rien si le pays n'est pas trouvé 
+5. Des tests ne sont pas pertinants exemple : celui qui teste TITLE dans app.component.spec.ts
 6. la page n'est pas responsive
-7. Le header n'est visible que sur la page Dashboard
+7. Pas de Header réutilisable duplication dans le html des composant 
+8. Les data sont gérées dans les composants
+9. L'url pour la page country est /country/:countryName
+10. Pas de gestion de l'accessibilité 
+11. Pas de gestion visuelle des états loading, empty et error.
 
-### solutions:
+### Solutions:
 1. créer un dossier models dans app où l'on pourra y mettre des fichier .ts qui auront chacun une interface réutilisable
 2. Nettoyer le code des console.log()
 3. Créer un service ou les données seraient centralisés
-4. Verifier que le pays n'est pas "undifined" et rediriger le user vers une page d'erreur
-5. Supprimer les test non pertinant
-6. Rendre la page responsive avec des media query
-7. Créer un header.component qui sera sur chaque pages
+4. Verifier que le pays n'est pas "undefined" et rediriger le user vers une page d'erreur
+5. Supprimer les test non pertinent
+6. Rendre la page responsive avec des media queries
+7. Créer un header.component qui sera appelé sur chaque page
+8. Créer un fichier data.service
+9. Changer l'url pour la page country en /country/:countryId
+10. Gérer l'accessibilité : contrastes AA, focus visibles, aria-label sur boutons/icônes, descriptions textuelles pour les graphes
+11. Ajouter un spinner ou squelette pour le loading, un message "Aucune donnée" avec bouton back pour empty et un message d'erreur avec bouton back pour error.
 
 
 ## ARCHITECTURE PROPOSÉE
