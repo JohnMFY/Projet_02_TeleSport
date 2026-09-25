@@ -1,6 +1,8 @@
-### ANALYSE D'ARCHITECTURE
+# ARCHITECTURE
 
-## Issues :
+## ANALYSE D'ARCHITECTURE
+
+### Issues :
 1. il n'y a pas d'interface et beaucoup d'utilisation de "any" alors que l'on connais la composition des datas
 2. l'intégralité des data mocké sont dans un console.log()
 3. Duplication de  private olympicUrl = './assets/mock/olympic.json'; entre les composants
@@ -9,7 +11,7 @@
 6. la page n'est pas responsive
 7. Le header n'est visible que sur la page Dashboard
 
-## solutions:
+### solutions:
 1. créer un dossier models dans app où l'on pourra y mettre des fichier .ts qui auront chacun une interface réutilisable
 2. Nettoyer le code des console.log()
 3. Créer un service ou les données seraient centralisés
@@ -19,9 +21,11 @@
 7. Créer un header.component qui sera sur chaque pages
 
 
-### ARCHITECTURE PROPOSÉE
+## ARCHITECTURE PROPOSÉE
 
-## STRUCTURE
+### STRUCTURE
+
+```text
 src/
 └── app/
     ├── components/
@@ -66,15 +70,17 @@ src/
     ├── app.component.html
     ├── app.component.scss
     └── app.module.ts
+```
+### DATA
 
-## DATA
+```text
 olympic.json
     ↓
 DataService
     ↓
 Dashboard / Country
-
-## UX
+```
+### UX
 - En tant que user, j'arrive sur Dashboard et je visualise le graphique des médailles avec tous les pays.
 
 - En tant que user, je clique sur un pays dans le graphique et je suis redirigé vers la page de ce pays.
