@@ -11,26 +11,26 @@ export class BarChartComponent implements AfterViewInit {
 
   public barChart!: Chart<"bar", number[], string>;
 
-  @Input() countries: string[] = [];
-  @Input() sumOfAllMedalsYears: number[] = [];
+    @Input() labels: string[] = [];
+    @Input() values: number[] = [];
 
   constructor(private router: Router) {}
 
-  ngAfterViewInit() {
-    this.buildBarChart(
-      this.countries,
-      this.sumOfAllMedalsYears
-    );
-  }
-    buildBarChart(countries: string[], sumOfAllMedalsYears: number[]) {
+    ngAfterViewInit() {
+        this.buildBarChart(
+            this.labels,
+            this.values
+        );
+    }
+    buildBarChart(labels: string[], values: number[]) {
         const isMobile = window.matchMedia('(max-width: 767px)').matches;
         const barChart = new Chart("DashboardBarChart", {
         type: 'bar',
         data: {
-            labels: countries,
+            labels: labels,
             datasets: [{
             label: 'Medals',
-            data: sumOfAllMedalsYears,
+            data: values,
             backgroundColor: ['#0b868f', '#adc3de', '#7a3c53', '#8f6263', 'orange', '#94819d'],
             }],
         },
