@@ -16,5 +16,9 @@
       </div>
     </div>
   </div>
-  <canvas id="DashboardPieChart">{{ pieChart }}</canvas>
+  <app-bar-chart
+    *ngIf="countries.length > 0"
+    [countries]="countries"
+    [sumOfAllMedalsYears]="sumOfAllMedalsYears">
+  </app-bar-chart>
 </div>
