@@ -11,11 +11,20 @@ import { DataService } from 'src/app/services/data.service';
 export class CountryDetailComponent implements OnInit {
   public years: string[] = [];
   public medals: number[] = [];
+  public headerData: { label: string; value: number }[] = [];
+  public countryFlag: string = '';
   public titlePage: string = '';
   public totalEntries: number = 0;
   public totalMedals: number = 0;
   public totalAthletes: number = 0;
   public error!: string;
+  private countryFlags: { [key: string]: string } = {
+    France: 'assets/images/FR.png',
+    Germany: 'assets/images/DE.png',
+    Italy: 'assets/images/IT.png',
+    Spain: 'assets/images/ES.png',
+    'United States': 'assets/images/US.png'
+  };
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
   
@@ -27,14 +36,29 @@ export class CountryDetailComponent implements OnInit {
         if (data && data.length > 0) {
           const selectedCountry = data.find(country => country.country === countryName);
           if (selectedCountry) {
+            this.countryFlag = this.countryFlags[selectedCountry.country] ?? '';
             this.titlePage = selectedCountry.country;
             this.totalEntries = selectedCountry.participations.length;
             this.years = selectedCountry.participations.map(
             participation => participation.year.toString()
-          );
-          this.medals = selectedCountry.participations.map(participation => participation.medalsCount);
-          this.totalMedals = this.medals.reduce((total, medal) => total + medal,0);
-          this.totalAthletes = selectedCountry.participations.reduce((total, participation) => total + participation.athleteCount,0);
+            );
+            this.medals = selectedCountry.participations.map(participation => participation.medalsCount);
+            this.totalMedals = this.medals.reduce((total, medal) => total + medal,0);
+            this.totalAthletes = selectedCountry.participations.reduce((total, participation) => total + participation.athleteCount,0);
+            this.headerData = [
+              {
+                label: 'Number of entries',
+                value: this.totalEntries
+              },
+              {
+                label: 'Total Number of medals',
+                value: this.totalMedals
+              },
+              {
+                label: 'Total Number of athletes',
+                value: this.totalAthletes
+              }
+            ];
           }
         }
       },

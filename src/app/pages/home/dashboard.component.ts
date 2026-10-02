@@ -11,6 +11,7 @@ import { DataService } from '../../services/data.service';
 export class DashboardComponent implements OnInit {
   public countries: string[] = [];
   public sumOfAllMedalsYears: number[] = [];
+  public headerData: { label: string; value: number }[] = [];
   public totalCountries: number = 0
   public totalJOs: number = 0
   public error!:string
@@ -34,6 +35,16 @@ export class DashboardComponent implements OnInit {
           this.countries = countriesWithMedals.map(item => item.country);
           this.sumOfAllMedalsYears = countriesWithMedals.map(item => item.totalMedals);
           this.totalCountries = this.countries.length;
+          this.headerData = [
+            {
+              label: 'Number of countries',
+              value: this.totalCountries
+            },
+            {
+              label: 'Number of JOs',
+              value: this.totalJOs
+            }
+          ];
         }
       },
       (error:HttpErrorResponse) => {

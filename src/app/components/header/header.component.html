@@ -1,0 +1,22 @@
+<div class="header">
+
+    <img
+        *ngIf="imageSrc"
+        [src]="imageSrc"
+        [alt]="imageAlt"
+        class="header-image"
+        [ngClass]="imageClass"
+    >
+
+  <div class="center">
+    <div>{{ title }}</div>
+  </div>
+
+  <div class="split">
+    <div *ngFor="let header of headers">
+      <p>{{ header.label }}</p>
+      <p>{{ header.value }}</p>
+    </div>
+  </div>
+
+</div>
