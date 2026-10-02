@@ -1,0 +1,25 @@
+
+.wrapper-container {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 50%;
+    h2{
+        text-align: center;
+        color: gray;
+    }
+}
+.btnBack{
+    text-decoration: none;
+    color: white;
+    background-color: grey;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    &:hover {
+        background-color: lightgray;
+        color: black;
+    }
+}

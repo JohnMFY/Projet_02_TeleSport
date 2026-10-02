@@ -4,11 +4,11 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: 'app-country',
-  templateUrl: './country.component.html',
-  styleUrls: ['./country.component.scss']
+  selector: 'app-country-detail',
+  templateUrl: './country-detail.component.html',
+  styleUrls: ['./country-detail.component.scss'],
 })
-export class CountryComponent implements OnInit {
+export class CountryDetailComponent implements OnInit {
   public years: string[] = [];
   public medals: number[] = [];
   public titlePage: string = '';
