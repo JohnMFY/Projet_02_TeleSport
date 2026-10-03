@@ -6,3 +6,15 @@
   align-items: center;
   flex-direction: column;
 }
+.btnBack{
+    text-decoration: none;
+    color: white;
+    background-color: grey;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    &:hover {
+        background-color: lightgray;
+        color: black;
+    }
+}
