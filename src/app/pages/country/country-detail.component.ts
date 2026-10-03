@@ -29,12 +29,12 @@ export class CountryDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
   
   ngOnInit() {
-    let countryName: string | null = null
-    this.route.paramMap.subscribe((param: ParamMap) => countryName = param.get('countryName'));
+    let countryId: number = 0;
+    this.route.paramMap.subscribe((param: ParamMap) => countryId = Number(param.get('countryId')));
     this.dataService.getOlympics().subscribe(
       (data) => {
         if (data && data.length > 0) {
-          const selectedCountry = data.find(country => country.country === countryName);
+          const selectedCountry = data.find(country => country.id === countryId);
           if (selectedCountry) {
             this.countryFlag = this.countryFlags[selectedCountry.country] ?? '';
             this.titlePage = selectedCountry.country;

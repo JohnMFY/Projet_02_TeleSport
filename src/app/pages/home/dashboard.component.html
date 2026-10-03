@@ -10,6 +10,7 @@
   <app-bar-chart
     *ngIf="countries.length > 0"
     [labels]="countries"
-    [values]="sumOfAllMedalsYears">
+    [values]="sumOfAllMedalsYears"
+    (barClicked)="onCountryClick($event)">
   </app-bar-chart>
 </div>

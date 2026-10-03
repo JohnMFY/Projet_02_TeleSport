@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   public countries: string[] = [];
   public sumOfAllMedalsYears: number[] = [];
   public headerData: { label: string; value: number }[] = [];
+  public countryIds: number[] = [];
   public totalCountries: number = 0
   public totalJOs: number = 0
   public error!:string
@@ -27,6 +28,7 @@ export class DashboardComponent implements OnInit {
           const countriesWithMedals = data.map(country => {
             const totalMedals = country.participations.reduce((acc, participation) => acc + participation.medalsCount,0);
               return {
+                id: country.id,
                 country: country.country,
                 totalMedals: totalMedals
               };
@@ -34,6 +36,7 @@ export class DashboardComponent implements OnInit {
           countriesWithMedals.sort((a, b) => b.totalMedals - a.totalMedals);
           this.countries = countriesWithMedals.map(item => item.country);
           this.sumOfAllMedalsYears = countriesWithMedals.map(item => item.totalMedals);
+          this.countryIds = countriesWithMedals.map(item => item.id);
           this.totalCountries = this.countries.length;
           this.headerData = [
             {
@@ -52,5 +55,10 @@ export class DashboardComponent implements OnInit {
         this.error = error.message
       }
     )
+  }
+  onCountryClick(index: number) {
+    const countryId = this.countryIds[index];
+
+    this.router.navigate(['country', countryId]);
   }
 }

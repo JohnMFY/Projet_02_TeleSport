@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -13,8 +12,7 @@ export class BarChartComponent implements AfterViewInit {
 
     @Input() labels: string[] = [];
     @Input() values: number[] = [];
-
-  constructor(private router: Router) {}
+    @Output() barClicked = new EventEmitter<number>();
 
     ngAfterViewInit() {
         this.buildBarChart(
@@ -42,8 +40,7 @@ export class BarChartComponent implements AfterViewInit {
                 const points = barChart.getElementsAtEventForMode(e.native, 'point', { intersect: true }, true)
                 if (points.length) {
                 const firstPoint = points[0];
-                const countryName = barChart.data.labels ? barChart.data.labels[firstPoint.index] : '';
-                this.router.navigate(['country', countryName]);
+                this.barClicked.emit(firstPoint.index);
                 }
             }
             }
