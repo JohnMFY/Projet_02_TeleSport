@@ -1,7 +1,8 @@
 import {HttpErrorResponse} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,12 +18,14 @@ export class DashboardComponent implements OnInit {
   public totalJOs: number = 0
   public error!:string
   titlePage: string = "Medals per Country";
+  public isLoading: boolean = true;
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService, private destroyRef: DestroyRef) { }
 
   ngOnInit() {
-    this.dataService.getOlympics().subscribe(
+    this.dataService.getOlympics().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(
       (data) => {
+        this.isLoading = false;
         if (data && data.length > 0) {
           this.totalJOs = Array.from(new Set(data.map(i =>i.participations.map(f => f.year)).flat())).length;
           const countriesWithMedals = data.map(country => {

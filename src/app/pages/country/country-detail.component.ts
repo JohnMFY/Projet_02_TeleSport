@@ -1,7 +1,8 @@
 import {HttpErrorResponse} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-country-detail',
@@ -25,14 +26,16 @@ export class CountryDetailComponent implements OnInit {
     Spain: 'assets/images/ES.png',
     'United States': 'assets/images/US.png'
   };
+  public isLoading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService, private destroyRef: DestroyRef) { }
   
   ngOnInit() {
     let countryId: number = 0;
-    this.route.paramMap.subscribe((param: ParamMap) => countryId = Number(param.get('countryId')));
-    this.dataService.getOlympics().subscribe(
+    this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((param: ParamMap) => countryId = Number(param.get('countryId')));
+    this.dataService.getOlympics().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(
       (data) => {
+        this.isLoading = false;
         if (data && data.length > 0) {
           const selectedCountry = data.find(country => country.id === countryId);
           if (selectedCountry) {
@@ -63,7 +66,7 @@ export class CountryDetailComponent implements OnInit {
         }
       },
       (error: HttpErrorResponse) => {
-        this.error = error.message
+        this.error = 'Unable to load data. Please try again later.';
       }
     );
   }
