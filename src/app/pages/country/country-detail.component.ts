@@ -66,6 +66,7 @@ export class CountryDetailComponent implements OnInit {
         }
       },
       (error: HttpErrorResponse) => {
+        this.isLoading = false;
         this.error = 'Unable to load data. Please try again later.';
       }
     );
