@@ -51,8 +51,7 @@ export class DashboardComponent implements OnInit {
         }
       },
       (error:HttpErrorResponse) => {
-        console.log(`erreur : ${error}`);
-        this.error = error.message
+        this.error = 'Unable to load data. Please try again later.';
       }
     )
   }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/home/dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CountryDetailComponent } from "./pages/country/country-detail.component";
+import { guardCountryGuard } from "./guard-country.guard";
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
   },
   {
     path : 'country/:countryId',
-    component : CountryDetailComponent
+    component : CountryDetailComponent,
+    canActivate: [guardCountryGuard]
   },
 
   {
