@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 .btnBack{
     text-decoration: none;
@@ -16,5 +17,11 @@
     &:hover {
         background-color: lightgray;
         color: black;
+    }
+}
+@media (max-width: 768px) {
+    .center {
+        width: 100%;
+        height: 90vh;
     }
 }
