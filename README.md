@@ -9,7 +9,6 @@ The country page have detail informations on the country about its Olympic parti
 
 - Angular 18
 - TypeScript
-- RxJS
 - Chart.js
 - SCSS
 
