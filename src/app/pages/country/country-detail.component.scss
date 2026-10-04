@@ -22,6 +22,10 @@
         background-color: lightgray;
         color: black;
     }
+    &:focus-visible {
+        outline: 3px solid black;
+        outline-offset: 3px;
+    }
 }
 .loader {
   text-align: center;
