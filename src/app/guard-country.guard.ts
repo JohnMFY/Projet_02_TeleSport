@@ -12,17 +12,14 @@ export const guardCountryGuard: CanActivateFn = (route, state) => {
 
   return dataService.getOlympics().pipe(
     map(data => {
-
-      const countryExists = data.some(
-        country => country.id === countryId
+      const countryExists = data.some(country => country.id === countryId);
+      if (countryExists) {return true;}
+      return router.createUrlTree(
+        ['/not-found'],
+        { queryParams: { reason: 'country' } }
       );
-
-      if (countryExists) {
-        return true;
-      }
-
-      return router.createUrlTree(['/not-found']);
     }),
+
     catchError(() => {
       return of(router.createUrlTree(['/not-found']));
     })

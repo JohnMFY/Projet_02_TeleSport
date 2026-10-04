@@ -51,6 +51,8 @@ export class DashboardComponent implements OnInit {
               value: this.totalJOs
             }
           ];
+        } else {
+          this.error = 'No data available.';
         }
       },
       (error:HttpErrorResponse) => {
