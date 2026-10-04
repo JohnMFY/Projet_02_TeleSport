@@ -13,10 +13,10 @@ export class DashboardComponent implements OnInit {
   public sumOfAllMedalsYears: number[] = [];
   public headerData: { label: string; value: number }[] = [];
   public countryIds: number[] = [];
-  public totalCountries: number = 0
-  public totalJOs: number = 0
-  public error!:string
-  titlePage: string = "Medals per Country";
+  public totalCountries: number = 0;
+  public totalJOs: number = 0;
+  public error!:string;
+  public titlePage: string = 'Medals per Country';
   public isLoading: boolean = true;
 
   constructor(private router: Router, private dataService: DataService, private destroyRef: DestroyRef) { }
