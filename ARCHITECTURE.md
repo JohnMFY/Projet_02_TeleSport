@@ -52,13 +52,13 @@ src/
     │   └── participation.model.ts
     │
     ├── pages/
-    │   ├── Dashboard/
+    │   ├── dashboard/
     │   │   ├── Dashboard.component.ts
     │   │   ├── Dashboard.component.html
     │   │   ├── Dashboard.component.scss
     │   │   └── Dashboard.component.spec.ts
     │   │
-    │   ├── CountryDetail/
+    │   ├── country/
     │   │   ├── CountryDetail.component.ts
     │   │   ├── CountryDetail.component.html
     │   │   ├── CountryDetail.component.scss
