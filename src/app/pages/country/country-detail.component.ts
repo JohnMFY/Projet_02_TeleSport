@@ -1,4 +1,3 @@
-import {HttpErrorResponse} from '@angular/common/http';
 import { Component, DestroyRef, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
@@ -65,7 +64,7 @@ export class CountryDetailComponent implements OnInit {
           }
         }
       },
-      (error: HttpErrorResponse) => {
+      () => {
         this.isLoading = false;
         this.error = 'Unable to load data. Please try again later.';
       }
