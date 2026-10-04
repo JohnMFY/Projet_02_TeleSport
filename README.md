@@ -28,4 +28,4 @@ To launch the project run this command :
 ng serve 
 ```
 Then open :
-[text](http://localhost:4200/)
+[localhost:4200](http://localhost:4200/)
