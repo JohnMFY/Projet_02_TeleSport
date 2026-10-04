@@ -8,8 +8,6 @@ import Chart from 'chart.js/auto';
 })
 export class BarChartComponent implements AfterViewInit {
 
-  public barChart!: Chart<"bar", number[], string>;
-
     @Input() labels: string[] = [];
     @Input() values: number[] = [];
     @Output() barClicked = new EventEmitter<number>();
@@ -22,7 +20,7 @@ export class BarChartComponent implements AfterViewInit {
     }
     buildBarChart(labels: string[], values: number[]) {
         const isMobile = window.matchMedia('(max-width: 767px)').matches;
-        const barChart = new Chart("DashboardBarChart", {
+        const barChart = new Chart("BarChart", {
         type: 'bar',
         data: {
             labels: labels,
@@ -46,6 +44,5 @@ export class BarChartComponent implements AfterViewInit {
             }
         }
         });
-        this.barChart = barChart;
     }
 }
