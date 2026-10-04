@@ -1,4 +1,3 @@
-import {HttpErrorResponse} from '@angular/common/http';
 import { Component, DestroyRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
@@ -55,7 +54,7 @@ export class DashboardComponent implements OnInit {
           this.error = 'No data available.';
         }
       },
-      (error:HttpErrorResponse) => {
+      () => {
         this.isLoading = false;
         this.error = 'Unable to load data. Please try again later.';
       }
