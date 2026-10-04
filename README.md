@@ -1,14 +1,9 @@
 # TéléSport - Olympic Games
 
-TéléSport is an Angular application that displays Olympic Games data.
+TéléSport is an Angular application for viewing Olympic Games statistics by country.
 
-The application provides: CHANGER CETTE PARTIE J'AIME PAS C'EST PAS MOI
-- A dashboard page displaying the total number of medals for each country.
-- A page for each country.
-- Olympic participation statistics.
-- Medal evolution by Olympic edition.
-- Responsive layouts for desktop, tablet and mobile.
-- Error and invalid route handling.
+The Dashboard page displays all countries and their total number of medals. 
+The country page have detail informations on the country about its Olympic participations, medals and athletes.
 
 ## Technologies
 
@@ -24,3 +19,14 @@ Clone the repository and install the dependencies:
 
 ```bash
 npm install
+```
+
+## Launch
+
+To launch the project run this command : 
+
+```bash
+ng serve 
+```
+Then open :
+[text](http://localhost:4200/)
